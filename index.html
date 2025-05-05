@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chirenje Legal Practitioners</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --chirenje-blue: #003366;
+      --chirenje-dark-blue: #001f4d;
+      --chirenje-light-blue: #0073e6;
+      --chirenje-medium-blue: #0055aa;
+      --chirenje-white: #ffffff;
+      --chirenje-grey: #f2f2f2;
+      --chirenje-text-dark: #333333;
+	  
+	  --chirenje-sky-blue: #00BFFF;
+	  --chirenje-gold: #C6A664;
+	  --chirenje-beige: #FAF3E0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--chirenje-text-dark);
+      background-color: var(--chirenje-white);
+    }
+
+    nav {
+      background-color: var(--chirenje-blue);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav .logo img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: var(--chirenje-white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--chirenje-light-blue);
+    }
+
+    header.hero {
+      background: url('https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--chirenje-white);
+      position: relative;
+      padding: 2rem;
+    }
+
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 51, 102, 0.6);
+      z-index: 0;
+    }
+
+    header.hero h1, header.hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header.hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    header.hero p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: var(--chirenje-dark-blue);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    section h3 {
+      font-size: 1.5rem;
+      color: var(--chirenje-medium-blue);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    #about p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      margin-top: 3rem;
+    }
+
+    .info-grid div {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      line-height: 1.8;
+    }
+
+    #attorneys .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .team-member {
+      perspective: 1000px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background-color: var(--chirenje-grey);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-front {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-back {
+      <!-- background-color: var(--chirenje-dark-blue); -->
+	  background-color: var(--chirenje-beige);
+      color: var(--chirenje-gold);
+      text-align: center;
+      padding: 2rem;
+      transform: rotateY(180deg);
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .team-member h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--chirenje-blue);
+    }
+
+    .team-member p {
+      font-size: 0.95rem;
+      color: var(--chirenje-text-dark);
+    }
+
+    footer {
+      background-color: var(--chirenje-blue);
+      color: var(--chirenje-white);
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      header.hero h1 {
+        font-size: 2.2rem;
+      }
+
+      header.hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="Chirenje Legal Practitioners Logo" />
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#attorneys">Attorneys</a></li>
+      <li><a href="#practice">Practice Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#consultation">Free Consultation</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <h1>Fighting for Your Justice</h1>
+    <p>Committed. Experienced. Trusted.</p>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <div style="max-width: 1000px; margin: auto;">
+      <h2>Welcome to Chirenje Legal Practitioners</h2>
+      <h3>We Always Fight For Your Justice to Win</h3>
+
+      <p>Established in 2008, the firm’s history spans over a short but distinguished path that has weathered many changes in the country’s economic, social, and political landscape to become a recognised growing legal powerhouse. Drawing from the depth and breadth of our team’s knowledge and experience, the firm strives to provide cost-effective, integrated legal services.</p>
+
+      <p>We are a vibrant team that is progressive in its thinking and is proud of its involvement in dispute resolution processes and research that has changed many businesses and people’s lives. Whatever we do, no matter how well we do it, we believe we can do it better and better—at reduced cost. Thus, we are driven by the desire to achieve excellence at all times and to continually uphold the firm’s work ethic of integrity and thoroughness coupled with a commitment to providing delivery on time that meets cost and commerciality. In this regard, we are lawyers who understand business and businesspeople who understand the law.</p>
+
+      <div class="info-grid">
+        <div>
+          <h4>Our Mission</h4>
+          <p>Lawyers navigate the labyrinth of justice, wielding words as their compass, seeking truth, fairness, and a just society for all.</p>
+        </div>
+        <div>
+          <h4>Our Vision</h4>
+          <p>To become a market leader in offering sound legal services that balance cost and commerciality.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <h4>Our Values</h4>
+        <ul>
+          <li>Think smart and act fast</li>
+          <li>Common sense / good judgement</li>
+          <li>Hard work</li>
+          <li>Simplicity</li>
+          <li>Family, love, and fun</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practice Areas Section -->
+  <section id="practice">
+    <h2>Practice Areas</h2>
+    <div style="max-width: 1000px; margin: auto;">
+      <p>We offer expert legal services across a range of practice areas:</p>
+      <ul>
+        <li>Commercial Law</li>
+        <li>Constitutional Law</li>
+        <li>Dispute Resolution</li>
+        <li>Litigation</li>
+        <li>Corporate Advisory</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Attorneys Section -->
+  <section id="attorneys">
+    <h2>Meet Our Attorneys</h2>
+    <div class="team">
+      <div class="team-member">
+        <div class="card">
+          <div class="card-front">
+            <img src="attorney1.jpg" alt="Attorney 1">
+            <h4>Justice M. Chirenje</h4>
+            <p>Founder and Principal Partner with over 20 years of legal experience in commercial and constitutional law.</p>
+          </div>
+          <div class="card-back">
+            <h4>About Justice M. Chirenje</h4>
+            <p>Justice has led numerous high-profile cases and is renowned for his expertise in constitutional law.</p>
+          </div>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="card">
+          <div class="card-front">
+            <img src="attorney2.jpg" alt="Attorney 2">
+            <h4>Linda G. Moyo</h4>
+            <p>Senior Associate focused on litigation and corporate advisory for SMEs and large institutions.</p>
+          </div>
+          <div class="card-back">
+            <h4>About Linda G. Moyo</h4>
+            <p>Linda brings a wealth of experience in corporate governance and litigation strategies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="card">
+          <div class="card-front">
+            <img src="attorney3.jpg" alt="Attorney 3">
+            <h4>Samuel T. Dube</h4>
+            <p>Litigator with a focus on constitutional law and human rights, committed to upholding justice.</p>
+          </div>
+          <div class="card-back">
+            <h4>About Samuel T. Dube</h4>
+            <p>Samuel has successfully handled numerous constitutional cases, advocating for individuals' rights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Chirenje Legal Practitioners. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
